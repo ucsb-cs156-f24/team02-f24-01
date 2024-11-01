@@ -22,7 +22,7 @@ const ucsbMenuItemFixtures = {
         id: 5,
         diningCommonsCode: "portola",
         name: "Cream of Broccoli Soup (v)",
-        station: "Greens & Grains",
+        station: "Entrees",
       },
     ],
   };
