@@ -1,10 +1,10 @@
 const ucsbOrganizationFixtures = {
   oneOrg: [
-     {
-    orgField: "OSLI",
-    orgTranslationShort: "STUDENT LIFE",
-    orgTranslation: "OFFICE OF STUDENT LIFE",
-    inactive: false,
+    {
+      orgField: "OSLI",
+      orgTranslationShort: "STUDENT LIFE",
+      orgTranslation: "OFFICE OF STUDENT LIFE",
+      inactive: false,
     },
   ],
   threeOrgs: [
