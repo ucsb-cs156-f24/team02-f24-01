@@ -24,12 +24,19 @@
                 "columns": [
                   {
                     "column": {
+                      "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
                         "primaryKeyName": "MENUITEMREVIEW_PK"
                       },
-                      "name": "ITEM_ID",
+                      "name": "ID",
                       "type": "BIGINT"
+                    }
+                  },
+                  {
+                    "column": {
+                        "name": "ITEM_ID",
+                        "type": "BIGINT"
                     }
                   },
                   {

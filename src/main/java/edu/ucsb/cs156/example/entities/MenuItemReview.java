@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Entity(name = "menuitemreview")
 public class MenuItemReview {
     @Id
+    private long id;
     private long itemId;
     private String reviewerEmail;
     private int stars;
