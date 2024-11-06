@@ -72,7 +72,7 @@ function MenuItemReviewForm({
               data-testid="MenuItemReviewForm-reviewerEmail"
               id="reviewerEmail"
               type="text"
-              isInvalid={Boolean(errors.name)}
+              isInvalid={Boolean(errors.reviewerEmail)}
               {...register("reviewerEmail", {
                 required: "Reviewer Email is required.",
               })}

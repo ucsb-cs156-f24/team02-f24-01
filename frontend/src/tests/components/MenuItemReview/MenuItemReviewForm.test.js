@@ -31,12 +31,12 @@ describe("MenuItemReviewForm tests", () => {
     render(
       <Router>
         <MenuItemReviewForm 
-            initialContents={menuItemReviewFixtures.oneReview} 
+            initialContents={menuItemReviewFixtures.oneMenuItemReview[0]} 
         />
       </Router>,
     );
     await screen.findByTestId(/MenuItemReviewForm-id/);
-    expect(screen.getByText(/Id/)).toBeInTheDocument();
+    expect(screen.getByTestId(/MenuItemReviewForm-id/)).toBeInTheDocument();
     expect(screen.getByTestId(/MenuItemReviewForm-id/)).toHaveValue("1");
   });
 
