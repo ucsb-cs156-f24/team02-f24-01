@@ -45,7 +45,7 @@ export default function OrganizationTable({
     {
       Header: "Inactive",
       // for boolean
-      accessor: (organizations) => organizations.inactive.toString()
+      accessor: (organizations) => organizations.inactive.toString(),
     },
   ];
   if (hasRole(currentUser, "ROLE_ADMIN")) {
