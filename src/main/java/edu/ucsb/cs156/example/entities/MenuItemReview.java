@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Entity(name = "menuitemreview")
 public class MenuItemReview {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long itemId;
     private String reviewerEmail;
