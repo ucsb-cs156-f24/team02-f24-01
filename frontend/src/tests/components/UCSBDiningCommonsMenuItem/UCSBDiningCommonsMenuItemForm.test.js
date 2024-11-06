@@ -35,7 +35,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-diningCommonsCode`)).toBeInTheDocument();
+    expect(
+      screen.getByTestId(`${testId}-diningCommonsCode`),
+    ).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-name`)).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-station`)).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-submit`)).toBeInTheDocument();
@@ -44,8 +46,10 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
   test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
-        <Router>                    
-          <UCSBDiningCommonsMenuItemForm initialContents={ucsbMenuItemFixtures.oneMenuItem} />
+        <Router>
+          <UCSBDiningCommonsMenuItemForm
+            initialContents={ucsbMenuItemFixtures.oneMenuItem}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -60,7 +64,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
 
-    expect(screen.getByTestId(`${testId}-diningCommonsCode`)).toBeInTheDocument();
+    expect(
+      screen.getByTestId(`${testId}-diningCommonsCode`),
+    ).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-name`)).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-station`)).toBeInTheDocument();
     expect(screen.getByTestId(`${testId}-submit`)).toBeInTheDocument();
