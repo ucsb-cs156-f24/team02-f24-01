@@ -66,5 +66,7 @@ export default function UCSBArticlesTable({ articles, currentUser }) {
     );
   }
 
-  return <OurTable data={articles} columns={columns} testid={"UCSBArticlesTable"} />;
+  return (
+    <OurTable data={articles} columns={columns} testid={"UCSBArticlesTable"} />
+  );
 }
