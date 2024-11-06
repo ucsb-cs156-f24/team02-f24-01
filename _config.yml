@@ -1,3 +1,4 @@
+
 title: Documentation
 description: >- # this means to ignore newlines until "baseurl:"
   When reviewing a PR for this repo, you can see what the documentation,
@@ -17,7 +18,9 @@ collections:
     permalink: /branches/:path/
 
 repo_name: "TBD"
+
+
 repo: ucsb-cs156-f24/team02-f24-01
 owner: ucsb-cs156-f24
 repo_name: team02-f24-01
-pull_requests: [{"author":{"id":"MDQ6VXNlcjYxMzk0NTgx","is_bot":false,"login":"Neamal","name":"Junhyung Yoon"},"headRefName":"junhyung-menuitemreview-fixtures","number":70,"title":"MenuItemReview - Fixtures - Junhyung Yoon","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/70"},{"author":{"id":"MDQ6VXNlcjYxMzk0NTgx","is_bot":false,"login":"Neamal","name":"Junhyung Yoon"},"headRefName":"junhyung-menuitemreview-backend","number":69,"title":"CRUD Backend for MenuItemReview - Junhyung Yoon","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/69"},{"author":{"id":"U_kgDOB3DvtQ","is_bot":false,"login":"vincentc0202","name":""},"headRefName":"vincentc0202-menuitem-fixtures","number":65,"title":"TEAM02-9: Added fixtures for menuitem","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/65"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjYxNTcyODg3","is_bot":false,"login":"vzaveri23","name":"Viraj Zaveri"},"headRefName":"viraj-orgs-table-component","number":71,"title":"Organizations table component and tests","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/71"},{"author":{"id":"MDQ6VXNlcjYxMzk0NTgx","is_bot":false,"login":"Neamal","name":"Junhyung Yoon"},"headRefName":"junhyung-menuitemreview-fixtures","number":70,"title":"MenuItemReview - Fixtures - Junhyung Yoon","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/70"},{"author":{"id":"MDQ6VXNlcjYxMzk0NTgx","is_bot":false,"login":"Neamal","name":"Junhyung Yoon"},"headRefName":"junhyung-menuitemreview-backend","number":69,"title":"CRUD Backend for MenuItemReview - Junhyung Yoon","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/69"},{"author":{"id":"U_kgDOB3DvtQ","is_bot":false,"login":"vincentc0202","name":""},"headRefName":"vincentc0202-menuitem-fixtures","number":65,"title":"TEAM02-9: Added fixtures for menuitem","url":"https://github.com/ucsb-cs156-f24/team02-f24-01/pull/65"}]
