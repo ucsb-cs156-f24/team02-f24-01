@@ -68,7 +68,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
       orgField: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
       orgTranslation: "SKYDIVING CLUB AT UCSB",
-      inactive: false
+      inactive: false,
     };
 
     axiosMock.onPost("/api/ucsborganizations/post").reply(202, organization);
@@ -88,10 +88,14 @@ describe("UCSBOrganizationCreatePage tests", () => {
     const orgFieldInput = screen.getByLabelText("Organization Field");
     expect(orgFieldInput).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByLabelText("Organization Translation Short");
+    const orgTranslationShortInput = screen.getByLabelText(
+      "Organization Translation Short",
+    );
     expect(orgTranslationShortInput).toBeInTheDocument();
 
-    const orgTranslationInput = screen.getByLabelText("Organization Translation");
+    const orgTranslationInput = screen.getByLabelText(
+      "Organization Translation",
+    );
     expect(orgTranslationInput).toBeInTheDocument();
 
     const inactiveInput = screen.getByLabelText("Inactive");
@@ -100,7 +104,9 @@ describe("UCSBOrganizationCreatePage tests", () => {
     const createButton = screen.getByText("Create");
     expect(createButton).toBeInTheDocument();
 
-    fireEvent.change(orgFieldInput, { target: { value: organization.orgField } });
+    fireEvent.change(orgFieldInput, {
+      target: { value: organization.orgField },
+    });
     fireEvent.change(orgTranslationShortInput, {
       target: { value: organization.orgTranslationShort },
     });
@@ -118,12 +124,12 @@ describe("UCSBOrganizationCreatePage tests", () => {
       orgField: "SKY",
       orgTranslationShort: "SKYDIVING CLUB",
       orgTranslation: "SKYDIVING CLUB AT UCSB",
-      inactive: false
+      inactive: false,
     });
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toHaveBeenCalledWith(
-      "New UCSBOrganization Created - orgField: SKY orgTranslationShort: SKYDIVING CLUB orgTranslation: SKYDIVING CLUB AT UCSB inactive: false"
+      "New UCSBOrganization Created - orgField: SKY orgTranslationShort: SKYDIVING CLUB orgTranslation: SKYDIVING CLUB AT UCSB inactive: false",
     );
     expect(mockNavigate).toHaveBeenCalledWith({ to: "/ucsborganizations" });
   });
