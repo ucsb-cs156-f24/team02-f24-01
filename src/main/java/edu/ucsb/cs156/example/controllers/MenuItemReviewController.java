@@ -66,17 +66,17 @@ public class MenuItemReviewController extends ApiController {
             @Parameter(name="itemId") @RequestParam long itemId,
             @Parameter(name="reviewerEmail") @RequestParam String reviewerEmail,
             @Parameter(name="stars") @RequestParam int stars,
-            @Parameter(name = "dateReviewed", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO_LOCAL_DATE_TIME) LocalDateTime dateReviewed,
+            @Parameter(name = "dateReviewed", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed,
             @Parameter(name = "comments") @RequestParam String comments)
             throws JsonProcessingException {
 
-        log.info("localDateTime={}", dateReviewed.withNano(0));
+        log.info("localDateTime={}", dateReviewed);
 
         MenuItemReview menuItemReview = new MenuItemReview();
         menuItemReview.setItemId(itemId);
         menuItemReview.setReviewerEmail(reviewerEmail);
         menuItemReview.setStars(stars);
-        menuItemReview.setDateReviewed(dateReviewed.withNano(0));
+        menuItemReview.setDateReviewed(dateReviewed);
         menuItemReview.setComments(comments);
 
         MenuItemReview savedReview = menuItemReviewRepository.save(menuItemReview);
@@ -109,7 +109,7 @@ public class MenuItemReviewController extends ApiController {
         menuItemReview.setItemId(incoming.getItemId());
         menuItemReview.setReviewerEmail(incoming.getReviewerEmail());
         menuItemReview.setStars(incoming.getStars());
-        menuItemReview.setDateReviewed(incoming.getDateReviewed().withNano(0));
+        menuItemReview.setDateReviewed(incoming.getDateReviewed());
         menuItemReview.setComments(incoming.getComments());
 
         menuItemReviewRepository.save(menuItemReview);
