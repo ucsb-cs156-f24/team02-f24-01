@@ -44,7 +44,7 @@ export default function ArticlesCreatePage({ storybook = false }) {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Create New ucsbArticles</h1>
+        <h1>Create a New Article</h1>
 
         <UCSBArticlesForm submitAction={onSubmit} />
       </div>
