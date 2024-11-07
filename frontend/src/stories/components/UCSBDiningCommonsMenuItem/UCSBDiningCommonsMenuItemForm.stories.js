@@ -3,7 +3,7 @@ import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenu
 import { ucsbMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 
 export default {
-  title: "components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm",
+  title: "components/UCSBDiningCommonsMenuItems/UCSBDiningCommonsMenuItemForm",
   component: UCSBDiningCommonsMenuItemForm,
 };
 
