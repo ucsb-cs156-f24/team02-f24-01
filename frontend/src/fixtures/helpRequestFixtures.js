@@ -7,7 +7,7 @@ const helpRequestFixtures = {
       requestTime: "2023-10-01T10:00:00",
       explanation: "Need help with project setup",
       solved: false,
-    }
+    },
   ],
   threeHelpRequests: [
     {
