@@ -88,22 +88,22 @@ describe("UCSBOrganizationIndexPage tests", () => {
         screen.getByTestId(`${testId}-cell-row-0-col-orgField`),
       ).toHaveTextContent("SKY");
     });
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgField`)).toHaveTextContent(
-      "ZPR",
-    );
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgField`)).toHaveTextContent(
-      "KRC",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgField`),
+    ).toHaveTextContent("ZPR");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-2-col-orgField`),
+    ).toHaveTextContent("KRC");
 
-    const createOrganizationButton = screen.queryByText("Create UCSB Organization");
+    const createOrganizationButton = screen.queryByText(
+      "Create UCSB Organization",
+    );
     expect(createOrganizationButton).not.toBeInTheDocument();
 
     const orgTranslationShort = screen.getByText("SKYDIVING CLUB");
     expect(orgTranslationShort).toBeInTheDocument();
 
-    const orgTranslation = screen.getByText(
-      "SKYDIVING CLUB AT UCSB",
-    );
+    const orgTranslation = screen.getByText("SKYDIVING CLUB AT UCSB");
     expect(orgTranslation).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
@@ -165,9 +165,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
       ).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgField`)).toHaveTextContent(
-      "SKY",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgField`),
+    ).toHaveTextContent("SKY");
 
     const deleteButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
@@ -177,7 +177,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toHaveBeenCalledWith("UCSB Organization with orgField SKY was deleted");
+      expect(mockToast).toHaveBeenCalledWith(
+        "UCSB Organization with orgField SKY was deleted",
+      );
     });
 
     await waitFor(() => {
