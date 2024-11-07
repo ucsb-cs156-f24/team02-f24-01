@@ -25,8 +25,8 @@ function MenuItemReviewForm({
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
 
-//   // Stryker disable next-line all
-//   const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
+  //   // Stryker disable next-line all
+  //   const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
@@ -82,9 +82,9 @@ function MenuItemReviewForm({
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
-    </Row>
+      </Row>
 
-    <Row>
+      <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="stars">Stars</Form.Label>
@@ -122,9 +122,9 @@ function MenuItemReviewForm({
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
-    </Row>
+      </Row>
 
-    <Row>
+      <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="comments">Comments</Form.Label>
