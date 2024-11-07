@@ -28,7 +28,7 @@ function HelpRequestForm({
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
-        {initialContents && initialContents.id && (
+        {initialContents && (
           <Col>
             <Form.Group className="mb-3">
               <Form.Label htmlFor="id">ID</Form.Label>
@@ -80,7 +80,9 @@ function HelpRequestForm({
         </Col>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="tableOrBreakoutRoom">Table or Breakout Room</Form.Label>
+            <Form.Label htmlFor="tableOrBreakoutRoom">
+              Table or Breakout Room
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
               id="tableOrBreakoutRoom"
@@ -100,7 +102,9 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requestTime">Request Time (iso format)</Form.Label>
+            <Form.Label htmlFor="requestTime">
+              Request Time (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requestTime"
               id="requestTime"
