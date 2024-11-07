@@ -41,9 +41,9 @@ export default function UCSBDiningCommonsMenuItemTable({
     },
 
     {
-        Header: "DiningCommonsCode",
-        accessor: "diningCommonsCode",
-      },
+      Header: "DiningCommonsCode",
+      accessor: "diningCommonsCode",
+    },
     {
       Header: "Name",
       accessor: "name",
@@ -61,7 +61,5 @@ export default function UCSBDiningCommonsMenuItemTable({
     );
   }
 
-  return (
-    <OurTable data={menuItems} columns={columns} testid={testIdPrefix} />
-  );
+  return <OurTable data={menuItems} columns={columns} testid={testIdPrefix} />;
 }
