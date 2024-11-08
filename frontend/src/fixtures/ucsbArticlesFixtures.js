@@ -4,7 +4,7 @@ const ucsbArticlesFixtures = {
     title: "Vegetables Are Better Than Fruits",
     url: "onion.com",
     explanation: "Nutritional values about different foods",
-    email: "raymondchen@ucsb.edu",
+    email: "ray@test.edu",
     dateAdded: "2022-01-02T12:00:00",
   },
   threeArticles: [
@@ -13,7 +13,7 @@ const ucsbArticlesFixtures = {
       title: "Vegetables Are Better Than Fruits",
       url: "onion.com",
       explanation: "Nutritional values about different foods",
-      email: "raymondchen@ucsb.edu",
+      email: "ray@test.edu",
       dateAdded: "2022-01-02T12:00:00",
     },
     {
@@ -21,7 +21,7 @@ const ucsbArticlesFixtures = {
       title: "Portola is the best dining hall",
       url: "ucsb.com",
       explanation: "Different rankings of dining halls",
-      email: "raymondchen@ucsb.edu",
+      email: "ray@test.edu",
       dateAdded: "2022-04-03T12:00:00",
     },
     {
@@ -29,7 +29,7 @@ const ucsbArticlesFixtures = {
       title: "Are dining halls the best financial option",
       url: "google.com",
       explanation: "Evaluating the financial benefits of dining halls",
-      email: "raymondchen@ucsb.edu",
+      email: "ray@test.edu",
       dateAdded: "2022-07-04T12:00:00",
     },
   ],
