@@ -1,7 +1,7 @@
 import {
   onDeleteSuccess,
   cellToAxiosParamsDelete,
-} from "main/utils/UCSBOrganizationUtils";
+} from "main/utils/MenuItemReviewUtils";
 import mockConsole from "jest-mock-console";
 
 const mockToast = jest.fn();
@@ -14,40 +14,37 @@ jest.mock("react-toastify", () => {
   };
 });
 
-describe("UCSBOrganizationUtils", () => {
+describe("MenuItemReviewUtils", () => {
   describe("onDeleteSuccess", () => {
     test("It puts the message on console.log and in a toast", () => {
       // arrange
       const restoreConsole = mockConsole();
 
       // act
-      onDeleteSuccess("Organization deleted successfully");
+      onDeleteSuccess("abc");
 
       // assert
-      expect(mockToast).toHaveBeenCalledWith(
-        "Organization deleted successfully",
-      );
+      expect(mockToast).toHaveBeenCalledWith("abc");
       expect(console.log).toHaveBeenCalled();
       const message = console.log.mock.calls[0][0];
-      expect(message).toMatch("Organization deleted successfully");
+      expect(message).toMatch("abc");
 
       restoreConsole();
     });
   });
-
   describe("cellToAxiosParamsDelete", () => {
     test("It returns the correct params", () => {
       // arrange
-      const cell = { row: { values: { orgField: "SKY" } } };
+      const cell = { row: { values: { id: 17 } } };
 
       // act
       const result = cellToAxiosParamsDelete(cell);
 
       // assert
       expect(result).toEqual({
-        url: "/api/ucsborganizations",
+        url: "/api/menuitemreview",
         method: "DELETE",
-        params: { orgField: "SKY" },
+        params: { id: 17 },
       });
     });
   });

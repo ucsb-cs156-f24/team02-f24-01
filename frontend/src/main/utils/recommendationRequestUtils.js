@@ -7,10 +7,10 @@ export function onDeleteSuccess(message) {
 
 export function cellToAxiosParamsDelete(cell) {
   return {
-    url: "/api/ucsborganizations",
+    url: "/api/recommendationrequests",
     method: "DELETE",
     params: {
-      orgField: cell.row.values.orgField,
+      id: cell.row.values.id,
     },
   };
 }
