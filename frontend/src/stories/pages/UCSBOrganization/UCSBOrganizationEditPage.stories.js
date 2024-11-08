@@ -7,7 +7,7 @@ import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizati
 import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures.js";
 
 export default {
-  title: "pages/UCSBOrganizations/UCSBOrganizationEditPage",
+  title: "pages/UCSBOrganization/UCSBOrganizationEditPage",
   component: UCSBOrganizationEditPage,
 };
 
