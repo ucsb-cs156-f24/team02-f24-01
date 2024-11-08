@@ -19,7 +19,7 @@ export default function UCSBDiningCommonsMenuItemCreatePage({
 
   const onSuccess = (menuItem) => {
     toast(
-      `New menu item Created - id: ${menuItem.id} diningCommonsCode: ${menuItem.diningCommonsCode} name: ${menuItem.name} station: ${menuItem.station}`,
+      `New menu item Created - id: ${menuItem.id} name: ${menuItem.name}`,
     );
   };
 
