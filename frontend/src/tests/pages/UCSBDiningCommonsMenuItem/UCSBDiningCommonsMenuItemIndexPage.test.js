@@ -101,8 +101,12 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
     const name = screen.getByText("Tofu Banh Mi Sandwich (v)");
     expect(name).toBeInTheDocument();
 
-    const code = screen.getByText("ortega");
-    expect(code).toBeInTheDocument();
+    const station = screen.getByText("Entree Specials");
+    expect(station).toBeInTheDocument();
+    
+    const codes = screen.getAllByText("ortega");
+    expect(codes.length).toBe(2); // 2 ortegas in total
+    expect(codes[0]).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(

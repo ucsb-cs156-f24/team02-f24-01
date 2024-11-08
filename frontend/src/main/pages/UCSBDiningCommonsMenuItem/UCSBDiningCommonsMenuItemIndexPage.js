@@ -26,7 +26,6 @@ export default function UCSBDiningCommonsMenuItemIndexPage() {
       return (
         <Button
           variant="primary"
-          // might be wrong
           href="/diningcommonsmenuitem/create"
           style={{ float: "right" }}
         >

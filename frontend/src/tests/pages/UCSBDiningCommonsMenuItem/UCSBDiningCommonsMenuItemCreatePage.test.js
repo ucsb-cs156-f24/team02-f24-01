@@ -120,13 +120,14 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
 
     expect(axiosMock.history.post[0].params).toEqual({
       name: "Tofu Banh Mi Sandwich (v)",
-      description: "Entree Specials",
+      station: "Entree Specials",
+      diningCommonsCode: "ortega",
     });
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toBeCalledWith(
-      "New restaurant Created - id: 2 name: Tofu Banh Mi Sandwich (v)",
+      "New menu item Created - id: 2 name: Tofu Banh Mi Sandwich (v)",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/ucsbdiningcommonsmenuitem" }); // MIGHT JUST BE /diningcommonsmenuitem
+    expect(mockNavigate).toBeCalledWith({ to: "/diningcommonsmenuitem" }); // MIGHT JUST BE /diningcommonsmenuitem
   });
 });
