@@ -186,7 +186,9 @@ describe("UCSBOrganizationTable tests", () => {
     fireEvent.click(editButton);
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/ucsborganizations/edit/SKY"),
+      expect(mockedNavigate).toHaveBeenCalledWith(
+        "/ucsborganizations/edit/SKY",
+      ),
     );
   });
   test("Delete button calls delete callback", async () => {
