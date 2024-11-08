@@ -4,8 +4,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { ucsbMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 import { http, HttpResponse } from "msw";
 
-import UCSBDiningCommonsMenuItemIndexPage
- from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
 
 export default {
   title: "pages/UCSBDiningCommonsMenuItems/UCSBDiningCommonsMenuItemIndexPage",

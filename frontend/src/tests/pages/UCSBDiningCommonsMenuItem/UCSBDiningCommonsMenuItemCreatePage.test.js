@@ -77,7 +77,9 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
       station: "Entree Specials",
     };
 
-    axiosMock.onPost("/api/ucsbdiningcommonsmenuitem/post").reply(202, menuItem);
+    axiosMock
+      .onPost("/api/ucsbdiningcommonsmenuitem/post")
+      .reply(202, menuItem);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -106,7 +108,9 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     fireEvent.change(codeInput, {
       target: { value: "ortega" },
     });
-    fireEvent.change(nameInput, { target: { value: "Tofu Banh Mi Sandwich (v)" } });
+    fireEvent.change(nameInput, {
+      target: { value: "Tofu Banh Mi Sandwich (v)" },
+    });
     fireEvent.change(stationInput, {
       target: { value: "Entree Specials" },
     });
@@ -123,6 +127,6 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     expect(mockToast).toBeCalledWith(
       "New restaurant Created - id: 2 name: Tofu Banh Mi Sandwich (v)",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/ucsbdiningcommonsmenuitem" });   // MIGHT JUST BE /diningcommonsmenuitem
+    expect(mockNavigate).toBeCalledWith({ to: "/ucsbdiningcommonsmenuitem" }); // MIGHT JUST BE /diningcommonsmenuitem
   });
 });
