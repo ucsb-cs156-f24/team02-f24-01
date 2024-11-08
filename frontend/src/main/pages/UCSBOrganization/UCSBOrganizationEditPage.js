@@ -24,7 +24,6 @@ export default function UCSBOrganizationEditPage({ storybook = false }) {
       },
     },
   );
-  
 
   const objectToAxiosPutParams = (organization) => ({
     url: "/api/ucsborganizations",
