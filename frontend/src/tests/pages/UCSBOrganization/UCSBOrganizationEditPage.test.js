@@ -143,7 +143,6 @@ describe("UCSBOrganizationEditPage tests", () => {
 
       await screen.findByTestId("UCSBOrganizationForm-orgField");
 
-      const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgField");
       const orgTranslationShortField = screen.getByTestId(
         "UCSBOrganizationForm-orgTranslationShort",
       );
