@@ -18,9 +18,7 @@ export default function UCSBDiningCommonsMenuItemCreatePage({
   });
 
   const onSuccess = (menuItem) => {
-    toast(
-      `New menu item Created - id: ${menuItem.id} name: ${menuItem.name}`,
-    );
+    toast(`New menu item Created - id: ${menuItem.id} name: ${menuItem.name}`);
   };
 
   const mutation = useBackendMutation(

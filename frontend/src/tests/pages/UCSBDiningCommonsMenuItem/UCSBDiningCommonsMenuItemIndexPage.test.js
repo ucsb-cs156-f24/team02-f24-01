@@ -103,7 +103,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
 
     const station = screen.getByText("Entree Specials");
     expect(station).toBeInTheDocument();
-    
+
     const codes = screen.getAllByText("ortega");
     expect(codes.length).toBe(2); // 2 ortegas in total
     expect(codes[0]).toBeInTheDocument();
