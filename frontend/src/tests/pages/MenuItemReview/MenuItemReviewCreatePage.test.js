@@ -69,7 +69,7 @@ describe("MenuItemReviewCreatePage tests", () => {
       itemId: "1234",
       reviewerEmail: "test@ucsb.edu",
       stars: "5",
-      dateReviewed: "2024-10-10T10:10:10",
+      dateReviewed: "2024-10-10T10:10:10.000",
       comments: "test",
     };
 
@@ -118,7 +118,7 @@ describe("MenuItemReviewCreatePage tests", () => {
         itemId: "1234",
         reviewerEmail: "test@ucsb.edu",
         stars: "5",
-        dateReviewed: "2024-10-10T10:10:10",
+        dateReviewed: "2024-10-10T10:10:10.000",
         comments: "test",
     });
 
