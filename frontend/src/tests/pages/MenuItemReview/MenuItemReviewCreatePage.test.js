@@ -101,25 +101,29 @@ describe("MenuItemReviewCreatePage tests", () => {
     const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
     fireEvent.change(itemIdField, { target: { value: "1234" } });
-    fireEvent.change(reviewerEmailField, { target: { value: "test@ucsb.edu" } });
+    fireEvent.change(reviewerEmailField, {
+      target: { value: "test@ucsb.edu" },
+    });
     fireEvent.change(starsField, {
       target: { value: "5" },
     });
-    fireEvent.change(dateReviewedField, { target: { value: "2024-10-10T10:10:10" } });
+    fireEvent.change(dateReviewedField, {
+      target: { value: "2024-10-10T10:10:10" },
+    });
     fireEvent.change(commentsField, { target: { value: "test" } });
 
     expect(submitButton).toBeInTheDocument();
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => expect(axiosMock.history.post.length).toBe(0));
+    await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-        itemId: "1234",
-        reviewerEmail: "test@ucsb.edu",
-        stars: "5",
-        dateReviewed: "2024-10-10T10:10:10.000",
-        comments: "test",
+      itemId: "1234",
+      reviewerEmail: "test@ucsb.edu",
+      stars: "5",
+      dateReviewed: "2024-10-10T10:10:10.000",
+      comments: "test",
     });
 
     expect(mockToast).toBeCalledWith(

@@ -18,7 +18,9 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
   });
 
   const onSuccess = (menuItemReview) => {
-    toast(`New menuItemReview Created - id: ${menuItemReview.id} itemId: ${menuItemReview.itemId}`);
+    toast(
+      `New menuItemReview Created - id: ${menuItemReview.id} itemId: ${menuItemReview.itemId}`,
+    );
   };
 
   const mutation = useBackendMutation(
@@ -35,7 +37,7 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/menuitemreview"/>;
+    return <Navigate to="/menuitemreview" />;
   }
 
   return (
@@ -43,7 +45,7 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
       <div className="pt-2">
         <h1>Create new Menu Item Review</h1>
 
-        <MenuItemReviewForm submitAction={onSubmit}/>
+        <MenuItemReviewForm submitAction={onSubmit} />
       </div>
     </BasicLayout>
   );
