@@ -5,9 +5,9 @@ export default function MenuItemReviewIndexPage() {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Index page not yet implemented test</h1>
+        <h1>Index page not yet implemented</h1>
         <p>
-          <a href="/MenuItemReview/create">Create</a>
+          <a href="/placeholder/create">Create</a>
         </p>
         <p>
           <a href="/placeholder/edit/1">Edit</a>
