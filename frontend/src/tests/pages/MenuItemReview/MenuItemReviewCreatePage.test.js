@@ -65,10 +65,10 @@ describe("MenuItemReviewCreatePage tests", () => {
   test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
     const queryClient = new QueryClient();
     const menuItemReview = {
-      id: "17",
-      itemId: "1234",
+      id: 17,
+      itemId: 1234,
       reviewerEmail: "test@ucsb.edu",
-      stars: "5",
+      stars: 5,
       dateReviewed: "2024-10-10T10:10:10.000",
       comments: "test",
     };
