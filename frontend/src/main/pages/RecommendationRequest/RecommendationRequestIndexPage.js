@@ -14,7 +14,7 @@ export default function RecommendationRequestIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/recommendationrequest/create"
+          href="/recommendationrequests/create"
           style={{ float: "right" }}
         >
           Create Recommendation Request
