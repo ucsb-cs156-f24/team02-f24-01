@@ -186,7 +186,9 @@ describe("UCSBOrganizationTable tests", () => {
     fireEvent.click(editButton);
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/organizations/edit/SKY"),
+      expect(mockedNavigate).toHaveBeenCalledWith(
+        "/ucsborganizations/edit/SKY",
+      ),
     );
   });
   test("Delete button calls delete callback", async () => {
@@ -194,7 +196,7 @@ describe("UCSBOrganizationTable tests", () => {
     const currentUser = currentUserFixtures.adminUser;
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
-      .onDelete("/api/organizations")
+      .onDelete("/api/ucsborganizations")
       .reply(200, { message: "Organization deleted successfully" });
     // act - render the component
     render(
