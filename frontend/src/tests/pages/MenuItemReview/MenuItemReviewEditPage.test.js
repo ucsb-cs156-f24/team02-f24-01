@@ -83,14 +83,16 @@ describe("MenuItemReviewEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/menuitemreview", { params: { id: 17 } }).reply(200, {
-        id: 17,
-        itemId: 1234,
-        reviewerEmail: "test@ucsb.edu",
-        stars: 5,
-        dateReviewed: "2024-10-10T10:10:10.000",
-        comments: "test",
-      });
+      axiosMock
+        .onGet("/api/menuitemreview", { params: { id: 17 } })
+        .reply(200, {
+          id: 17,
+          itemId: 1234,
+          reviewerEmail: "test@ucsb.edu",
+          stars: 5,
+          dateReviewed: "2024-10-10T10:10:10.000",
+          comments: "test",
+        });
       axiosMock.onPut("/api/menuitemreview").reply(200, {
         id: 17,
         itemId: 1234,
@@ -138,7 +140,7 @@ describe("MenuItemReviewEditPage tests", () => {
       const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
       expect(idField).toHaveValue("17");
-      expect(itemIdField).toHaveValue("1234")
+      expect(itemIdField).toHaveValue("1234");
       expect(reviewerEmailField).toHaveValue("test@ucsb.edu");
       expect(starsField).toHaveValue(5);
       expect(dateReviewedField).toHaveValue("2024-10-10T10:10:10.000");
@@ -170,7 +172,7 @@ describe("MenuItemReviewEditPage tests", () => {
       const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
       expect(idField).toHaveValue("17");
-      expect(itemIdField).toHaveValue("1234")
+      expect(itemIdField).toHaveValue("1234");
       expect(reviewerEmailField).toHaveValue("test@ucsb.edu");
       expect(starsField).toHaveValue(5);
       expect(dateReviewedField).toHaveValue("2024-10-10T10:10:10.000");
