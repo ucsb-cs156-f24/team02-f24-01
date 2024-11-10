@@ -59,7 +59,7 @@ ThreeItemsAdminUser.parameters = {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
     http.get("/api/menuitemreview/all", () => {
-      return HttpResponse.json(ucsbMenuItemReview.threeMenuItemReviews);
+      return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews);
     }),
     http.delete("/api/menuitemreview", () => {
       return HttpResponse.json({}, { status: 200 });
