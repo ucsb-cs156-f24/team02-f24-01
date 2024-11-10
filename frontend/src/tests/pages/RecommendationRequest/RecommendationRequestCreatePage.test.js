@@ -140,6 +140,6 @@ describe("RecommendationRequestCreatePage tests", () => {
     expect(mockToast).toBeCalledWith(
       "New Recommendation Request Created - id: 17",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/recommendationrequest" });
+    expect(mockNavigate).toBeCalledWith({ to: "/recommendationrequests" });
   });
 });

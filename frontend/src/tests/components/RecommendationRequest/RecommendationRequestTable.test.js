@@ -47,7 +47,7 @@ describe("RecommendationRequestTable tests", () => {
       "explanation",
       "dateRequested",
       "dateNeeded",
-      "done",
+      "Done",
     ];
     const testId = "RecommendationRequestTable";
 
@@ -67,6 +67,9 @@ describe("RecommendationRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "2",
     );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-Done`),
+    ).toHaveTextContent("true");
 
     const editButton = screen.queryByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -109,7 +112,7 @@ describe("RecommendationRequestTable tests", () => {
       "explanation",
       "dateRequested",
       "dateNeeded",
-      "done",
+      "Done",
     ];
     const testId = "RecommendationRequestTable";
 
