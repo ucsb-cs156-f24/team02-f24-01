@@ -1,12 +1,12 @@
+import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import UCSBArticlesTable from "main/components/UCSBArticles/UCSBArticlesTable";
 import React from "react";
 import { useBackend } from "main/utils/useBackend";
 
-import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import MenuItemReviewTable from "main/components/MenuItemReview/MenuItemReviewTable";
 import { Button } from "react-bootstrap";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 
-export default function MenuItemReviewIndexPage() {
+export default function UCSBArticlesIndexPage() {
   const currentUser = useCurrentUser();
 
   const createButton = () => {
@@ -14,23 +14,23 @@ export default function MenuItemReviewIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/menuitemreview/create"
+          href="/ucsbarticles/create"
           style={{ float: "right" }}
         >
-          Create MenuItemReview
+          Create Article
         </Button>
       );
     }
   };
 
   const {
-    data: reviews,
+    data: articles,
     error: _error,
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/menuitemreview/all"],
-    { method: "GET", url: "/api/menuitemreview/all" },
+    ["/api/ucsbarticles/all"],
+    { method: "GET", url: "/api/ucsbarticles/all" },
     [],
   );
 
@@ -38,8 +38,8 @@ export default function MenuItemReviewIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>MenuItemReview</h1>
-        <MenuItemReviewTable reviews={reviews} currentUser={currentUser} />
+        <h1>UCSB Articles</h1>
+        <UCSBArticlesTable articles={articles} currentUser={currentUser} />
       </div>
     </BasicLayout>
   );

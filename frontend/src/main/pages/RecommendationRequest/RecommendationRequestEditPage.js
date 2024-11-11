@@ -59,7 +59,7 @@ export default function RecommendationRequestEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/recommendationrequest" />;
+    return <Navigate to="/recommendationrequests" />;
   }
 
   return (

@@ -1,48 +1,48 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+import UCSBArticlesForm from "main/components/UCSBArticles/UCSBArticlesForm";
 import { useParams } from "react-router-dom";
-import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
 import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function MenuItemReviewEditPage({ storybook = false }) {
+export default function UCSBArticlesEditPage({ storybook = false }) {
   let { id } = useParams();
 
   const {
-    data: menuItemReview,
+    data: ucsbArticles,
     _error,
     _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    [`/api/menuitemreview?id=${id}`],
+    [`/api/ucsbarticles?id=${id}`],
     {
       // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
       method: "GET",
-      url: `/api/menuitemreview`,
+      url: `/api/ucsbarticles`,
       params: {
         id,
       },
     },
   );
 
-  const objectToAxiosPutParams = (menuItemReview) => ({
-    url: "/api/menuitemreview",
+  const objectToAxiosPutParams = (ucsbArticles) => ({
+    url: "/api/ucsbarticles",
     method: "PUT",
     params: {
-      id: menuItemReview.id,
+      id: ucsbArticles.id,
     },
     data: {
-      itemId: menuItemReview.itemId,
-      reviewerEmail: menuItemReview.reviewerEmail,
-      stars: menuItemReview.stars,
-      dateReviewed: menuItemReview.dateReviewed,
-      comments: menuItemReview.comments,
+      title: ucsbArticles.title,
+      url: ucsbArticles.url,
+      explanation: ucsbArticles.explanation,
+      email: ucsbArticles.email,
+      dateAdded: ucsbArticles.dateAdded,
     },
   });
 
-  const onSuccess = (menuItemReview) => {
+  const onSuccess = (ucsbArticles) => {
     toast(
-      `MenuItemReview Updated - id: ${menuItemReview.id} itemId: ${menuItemReview.itemId}`,
+      `UCSBArticle Updated - id: ${ucsbArticles.id} title: ${ucsbArticles.title}`,
     );
   };
 
@@ -50,7 +50,7 @@ export default function MenuItemReviewEditPage({ storybook = false }) {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/menuitemreview?id=${id}`],
+    [`/api/ucsbarticles?id=${id}`],
   );
 
   const { isSuccess } = mutation;
@@ -60,16 +60,16 @@ export default function MenuItemReviewEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/menuitemreview" />;
+    return <Navigate to="/ucsbarticles" />;
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit MenuItemReview</h1>
-        {menuItemReview && (
-          <MenuItemReviewForm
-            initialContents={menuItemReview}
+        <h1>Edit UCSBArticle</h1>
+        {ucsbArticles && (
+          <UCSBArticlesForm
+            initialContents={ucsbArticles}
             submitAction={onSubmit}
             buttonLabel="Update"
           />
