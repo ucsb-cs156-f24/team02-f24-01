@@ -218,7 +218,7 @@ function App() {
           <>
             <Route
               exact
-              path="/diningcommonsmenuitem/edit/:id"
+              path="/ucsbdiningcommonsmenuitem/edit/:id"
               element={<UCSBDiningCommonsMenuItemEditPage />}
             />
             <Route
