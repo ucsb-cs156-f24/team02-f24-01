@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -31,7 +31,7 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-describe("MenuItemReviewCreatePage tests", () => {
+describe("ArticlesCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   beforeEach(() => {
@@ -50,67 +50,51 @@ describe("MenuItemReviewCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewCreatePage />
+          <ArticlesCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
-
-    await waitFor(() => {
-      expect(
-        screen.getByTestId("MenuItemReviewForm-dateReviewed"),
-      ).toBeInTheDocument();
-    });
   });
 
   test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
     const queryClient = new QueryClient();
-    const menuItemReview = {
+    const ucsbArticles = {
       id: 17,
-      itemId: 1234,
-      reviewerEmail: "test@ucsb.edu",
-      stars: 5,
-      dateReviewed: "2024-10-10T10:10:10.000",
-      comments: "test",
+      title: "Vegetables Are Better Than Fruits",
+      url: "onion.com",
+      explanation: "Nutritional values about different foods",
+      email: "raymondchen@ucsb.edu",
+      dateAdded: "2022-02-02T00:00",
     };
 
-    axiosMock.onPost("/api/menuitemreview/post").reply(202, menuItemReview);
+    axiosMock.onPost("/api/ucsbarticles/post").reply(202, ucsbArticles);
 
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemReviewCreatePage />
+          <ArticlesCreatePage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
-    await waitFor(() => {
-      expect(
-        screen.getByTestId("MenuItemReviewForm-dateReviewed"),
-      ).toBeInTheDocument();
-    });
+    const titleField = screen.getByTestId("UCSBArticlesForm-title");
+    const urlField = screen.getByTestId("UCSBArticlesForm-url");
+    const explanationField = screen.getByTestId("UCSBArticlesForm-explanation");
+    const emailField = screen.getByTestId("UCSBArticlesForm-email");
+    const dateAddedField = screen.getByTestId("UCSBArticlesForm-dateAdded");
+    const submitButton = screen.getByTestId("UCSBArticlesForm-submit");
 
-    const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
-    const reviewerEmailField = screen.getByTestId(
-      "MenuItemReviewForm-reviewerEmail",
-    );
-    const starsField = screen.getByTestId("MenuItemReviewForm-stars");
-    const dateReviewedField = screen.getByTestId(
-      "MenuItemReviewForm-dateReviewed",
-    );
-    const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
-    const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
-
-    fireEvent.change(itemIdField, { target: { value: "1234" } });
-    fireEvent.change(reviewerEmailField, {
-      target: { value: "test@ucsb.edu" },
+    fireEvent.change(titleField, {
+      target: { value: "Vegetables Are Better Than Fruits" },
     });
-    fireEvent.change(starsField, {
-      target: { value: "5" },
+    fireEvent.change(urlField, { target: { value: "onion.com" } });
+    fireEvent.change(explanationField, {
+      target: { value: "Nutritional values about different foods" },
     });
-    fireEvent.change(dateReviewedField, {
-      target: { value: "2024-10-10T10:10:10" },
+    fireEvent.change(emailField, { target: { value: "raymondchen@ucsb.edu" } });
+    fireEvent.change(dateAddedField, {
+      target: { value: "2022-02-02T00:00" },
     });
-    fireEvent.change(commentsField, { target: { value: "test" } });
 
     expect(submitButton).toBeInTheDocument();
 
@@ -119,16 +103,16 @@ describe("MenuItemReviewCreatePage tests", () => {
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-      itemId: "1234",
-      reviewerEmail: "test@ucsb.edu",
-      stars: "5",
-      dateReviewed: "2024-10-10T10:10:10.000",
-      comments: "test",
+      dateAdded: "2022-02-02T00:00",
+      title: "Vegetables Are Better Than Fruits",
+      url: "onion.com",
+      explanation: "Nutritional values about different foods",
+      email: "raymondchen@ucsb.edu",
     });
 
     expect(mockToast).toBeCalledWith(
-      "New menuItemReview Created - id: 17 itemId: 1234",
+      "New ucsbArticles Created - id: 17 title: Vegetables Are Better Than Fruits",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/menuitemreview" });
+    expect(mockNavigate).toBeCalledWith({ to: "/ucsbarticles" });
   });
 });

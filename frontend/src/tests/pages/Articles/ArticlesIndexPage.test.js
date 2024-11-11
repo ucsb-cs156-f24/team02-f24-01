@@ -1,11 +1,11 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
+import { ucsbArticlesFixtures } from "fixtures/ucsbArticlesFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
@@ -20,10 +20,10 @@ jest.mock("react-toastify", () => {
   };
 });
 
-describe("UCSBDatesIndexPage tests", () => {
+describe("ArticlesIndexPage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
-  const testId = "RecommendationRequestTable";
+  const testId = "UCSBArticlesTable";
 
   const setupUserOnly = () => {
     axiosMock.reset();
@@ -51,41 +51,39 @@ describe("UCSBDatesIndexPage tests", () => {
     // arrange
     setupAdminUser();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/recommendationrequests/all").reply(200, []);
+    axiosMock.onGet("/api/ucsbarticles/all").reply(200, []);
 
     // act
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestIndexPage />
+          <ArticlesIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     // assert
     await waitFor(() => {
-      expect(
-        screen.getByText(/Create Recommendation Request/),
-      ).toBeInTheDocument();
+      expect(screen.getByText(/Create Article/)).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create Recommendation Request/);
-    expect(button).toHaveAttribute("href", "/recommendationrequests/create");
+    const button = screen.getByText(/Create Article/);
+    expect(button).toHaveAttribute("href", "/ucsbarticles/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
-  test("renders three dates correctly for regular user", async () => {
+  test("renders three articles correctly for regular user", async () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/recommendationrequests/all")
-      .reply(200, recommendationRequestFixtures.threeRequests);
+      .onGet("/api/ucsbarticles/all")
+      .reply(200, ucsbArticlesFixtures.threeArticles);
 
     // act
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestIndexPage />
+          <ArticlesIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -104,23 +102,21 @@ describe("UCSBDatesIndexPage tests", () => {
     );
 
     // assert that the Create button is not present when user isn't an admin
-    expect(
-      screen.queryByText(/Create Recommendation Request/),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/Create Article/)).not.toBeInTheDocument();
   });
 
   test("renders empty table when backend unavailable, user only", async () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/recommendationrequests/all").timeout();
+    axiosMock.onGet("/api/ucsbarticles/all").timeout();
     const restoreConsole = mockConsole();
 
     // act
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestIndexPage />
+          <ArticlesIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -132,7 +128,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
     const errorMessage = console.error.mock.calls[0][0];
     expect(errorMessage).toMatch(
-      "Error communicating with backend via GET on /api/recommendationrequests/all",
+      "Error communicating with backend via GET on /api/ucsbarticles/all",
     );
     restoreConsole();
 
@@ -146,17 +142,17 @@ describe("UCSBDatesIndexPage tests", () => {
     setupAdminUser();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/recommendationrequests/all")
-      .reply(200, recommendationRequestFixtures.threeRequests);
+      .onGet("/api/ucsbarticles/all")
+      .reply(200, ucsbArticlesFixtures.threeArticles);
     axiosMock
-      .onDelete("/api/recommendationrequests")
-      .reply(200, "Recommendation Request with id 1 was deleted");
+      .onDelete("/api/ucsbarticles")
+      .reply(200, "UCSBArticle with id 1 was deleted");
 
     // act
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RecommendationRequestIndexPage />
+          <ArticlesIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -182,9 +178,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
     // assert
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith(
-        "Recommendation Request with id 1 was deleted",
-      );
+      expect(mockToast).toBeCalledWith("UCSBArticle with id 1 was deleted");
     });
   });
 });
