@@ -83,7 +83,7 @@ export default function AppNavbar({
                   </Nav.Link>
                   <Nav.Link as={Link} to="/helprequest">
                     Help Request
-                    </Nav.Link>
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/diningcommonsmenuitem">
                     UCSB DiningCommonsMenuItem
                   </Nav.Link>
