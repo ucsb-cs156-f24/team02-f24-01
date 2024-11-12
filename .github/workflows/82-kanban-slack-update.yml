@@ -4,8 +4,6 @@ name: "82-kanban-slack-update.yml"
 # <https://ucsb-cs156.github.io/topics/github_actions/workflow_82.html>
 
 on:
-  schedule:
-    - cron: "0 17 * * *"  # Run at 9:00 AM PST / 5:00 PM UTC
   workflow_dispatch:  # Allows manual triggering
 
 env:
@@ -37,10 +35,10 @@ jobs:
             echo "Current date is before $end_date. Continuing workflow."
             echo "continue=true" >> "$GITHUB_OUTPUT"
           fi
-          OWNER_PLUS_REPOSITORY=${{github.repository}}
-          OWNER=${{ github.repository_owner }}
-          REPOSITORY=${OWNER_PLUS_REPOSITORY/$OWNER\//}
-          if [[ "$REPOSITORY" == STARTER* ]]; then
+          REPO=${{ github.repository }}
+          PREFIX="${REPO: 7}"
+          echo "prefix=${PREFIX}" >> "$GITHUB_OUTPUT"
+          if [[ "$PREFIX" == "STARTER" ]]; then
             echo "This workflow should not run on a starter repository"
             echo "continue=false" >> "$GITHUB_OUTPUT"
           fi
@@ -52,6 +50,7 @@ jobs:
   # This job extracts the team name from the repository name
   # The team name is used to find the project ID for the team
   # It does this by extracting the last 6 characters of the repository name
+
   # Then sets the team name as an output for the next job
   get_team_name:
     name: Get Team Name 
@@ -416,3 +415,4 @@ jobs:
             ```
             ${{ env.ascii_table_content }}
             ```
+
