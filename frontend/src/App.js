@@ -19,6 +19,7 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+<<<<<<< HEAD
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
@@ -26,6 +27,11 @@ import RecommendationRequestEditPage from "main/pages/RecommendationRequest/Reco
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
+=======
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
+>>>>>>> 1d35239a (Created menuItem placeholders)
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -135,8 +141,13 @@ function App() {
           <>
             <Route
               exact
+<<<<<<< HEAD
               path="/recommendationrequest"
               element={<RecommendationRequestIndexPage />}
+=======
+              path="/diningcommonsmenuitem"
+              element={<UCSBDiningCommonsMenuItemIndexPage />}
+>>>>>>> 1d35239a (Created menuItem placeholders)
             />
           </>
         )}
@@ -144,6 +155,7 @@ function App() {
           <>
             <Route
               exact
+<<<<<<< HEAD
               path="/recommendationrequest/edit/:id"
               element={<RecommendationRequestEditPage />}
             />
@@ -199,6 +211,15 @@ function App() {
               exact
               path="/ucsborganization/create"
               element={<UCSBOrganizationCreatePage />}
+=======
+              path="/diningcommonsmenuitem/edit/:id"
+              element={<UCSBDiningCommonsMenuItemEditPage />}
+            />
+            <Route
+              exact
+              path="/diningcommonsMenuItem/create"
+              element={<UCSBDiningCommonsMenuItemCreatePage />}
+>>>>>>> 1d35239a (Created menuItem placeholders)
             />
           </>
         )}
