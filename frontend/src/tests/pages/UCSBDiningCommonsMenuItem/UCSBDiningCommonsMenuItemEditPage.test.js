@@ -165,7 +165,7 @@ describe("UCSBDiningCommonsMenuItemEditPage tests", () => {
           name: "Seasame salad",
           station: "Veggies",
         }),
-      ); // posted object
+      ); 
     });
 
     test("Changes when you click Update", async () => {
