@@ -1,9 +1,9 @@
 import React from "react";
 import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
-import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
+import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 
 export default {
-  title: "components/HelpRequest/HelpRequestForm",
+  title: "components/HelpRequests/HelpRequestForm",
   component: HelpRequestForm,
 };
 
@@ -24,7 +24,7 @@ Create.args = {
 export const Update = Template.bind({});
 
 Update.args = {
-  initialContents: helpRequestFixtures.oneRequest,
+  initialContents: helpRequestsFixtures.oneRequest,
   buttonLabel: "Update",
   submitAction: (data) => {
     console.log("Submit was clicked with data: ", data);
