@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -244,12 +244,7 @@
 <a name='L179'></a><a href='#L179'>179</a>
 <a name='L180'></a><a href='#L180'>180</a>
 <a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,20 +258,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -419,12 +414,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -439,34 +429,36 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 &nbsp;
-function HelpRequestForm({
+function <span class="fstat-no" title="function not covered" >HelpRequestForm(</span>{
   initialContents,
   submitAction,
-  buttonLabel = "Create",
+  buttonLabel = <span class="branch-0 cbranch-no" title="branch not covered" >"Create",</span>
 }) {
   // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: initialContents || {} });
+  } = <span class="cstat-no" title="statement not covered" >useForm({ defaultValues: initialContents || {} });</span>
   // Stryker restore all
 &nbsp;
-  const navigate = useNavigate();
+  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+&nbsp;
+  // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
+  // Note that even this complex regex may still need some tweaks
 &nbsp;
   // Stryker disable Regex
-  const email_regex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const isoDate_regex =
-    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-  // Stryker recover Regex
-&nbsp;
-  return (
+  const isodate_regex =
+<span class="cstat-no" title="statement not covered" >    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;</span>
+  // Stryker restore Regex
+  const email_regex = <span class="cstat-no" title="statement not covered" >/\S@\S+\.\S/;</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
-      {initialContents &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Row&gt;</span>
+      &lt;Row&gt;
+        {initialContents &amp;&amp; (
           &lt;Col&gt;
             &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="id"&gt;ID&lt;/Form.Label&gt;
+              &lt;Form.Label htmlFor="id"&gt;id&lt;/Form.Label&gt;
               &lt;Form.Control
                 data-testid="HelpRequestForm-id"
                 id="id"
@@ -477,56 +469,53 @@ function HelpRequestForm({
               /&gt;
             &lt;/Form.Group&gt;
           &lt;/Col&gt;
-        &lt;/Row&gt;
-      )}
+        )}
 &nbsp;
-      &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="requesterEmail"&gt;
+              Help Requester Email
+            &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="HelpRequestForm-requesterEmail"
               id="requesterEmail"
-              type="email"
+              type="text"
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
-                required: "Requester Email is required.",
-                pattern: {
-                  value: email_regex,
-                  message: "Please enter a valid email address.",
-                },
+                required: true,
+                pattern: email_regex,
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.requesterEmail?.message}
+              {errors.requesterEmail &amp;&amp; "Requester's Email is required."}
+              {errors.requesterEmail?.type === "pattern" &amp;&amp;
+                "RequesterEmail must be a valid email address"}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="teamId"&gt;Team&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="teamId"&gt;Team ID&lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="HelpRequestForm-teamId"
               id="teamId"
               type="text"
               isInvalid={Boolean(errors.teamId)}
-              {...register("teamId", { required: "Team ID is required." })}
+              {...register("teamId", {
+                required: "Team ID is required.",
+              })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
               {errors.teamId?.message}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
-      &lt;/Row&gt;
-&nbsp;
-      &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
             &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;
-              Table or Breakout Room
+              Table or Breakout Room number
             &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
@@ -534,7 +523,7 @@ function HelpRequestForm({
               type="text"
               isInvalid={Boolean(errors.tableOrBreakoutRoom)}
               {...register("tableOrBreakoutRoom", {
-                required: "Table or Breakout Room is required.",
+                required: "Table or Breakout Room number is required.",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -543,13 +532,10 @@ function HelpRequestForm({
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="requestTime"&gt;
-              Request Time (iso format)
-            &lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="requestTime"&gt;Request Time&lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="HelpRequestForm-requestTime"
               id="requestTime"
@@ -557,16 +543,15 @@ function HelpRequestForm({
               isInvalid={Boolean(errors.requestTime)}
               {...register("requestTime", {
                 required: true,
-                pattern: isoDate_regex,
+                pattern: isodate_regex,
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.requestTime &amp;&amp; "Request Time is required. "}
+              {errors.requestTime &amp;&amp; "Request Time is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
@@ -575,41 +560,42 @@ function HelpRequestForm({
               data-testid="HelpRequestForm-explanation"
               id="explanation"
               type="text"
-              as="textarea"
               isInvalid={Boolean(errors.explanation)}
               {...register("explanation", {
                 required: "Explanation is required.",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-              {errors.explanation?.message}
+              {errors.explanation &amp;&amp; "Explanation is required."}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
             &lt;Form.Label htmlFor="solved"&gt;Solved&lt;/Form.Label&gt;
-            &lt;Form.Check
+            &lt;Form.Select
               data-testid="HelpRequestForm-solved"
               id="solved"
-              type="checkbox"
-              {...register("solved")}
-            /&gt;
+              isInvalid={Boolean(errors.solved)}
+              {...register("solved", {})}
+            &gt;
+              &lt;option value="true"&gt;True&lt;/option&gt;
+              &lt;option value="false"&gt;False&lt;/option&gt;
+            &lt;/Form.Select&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;&lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
       &lt;/Row&gt;
-&nbsp;
       &lt;Row&gt;
         &lt;Col&gt;
           &lt;Button type="submit" data-testid="HelpRequestForm-submit"&gt;
             {buttonLabel}
           &lt;/Button&gt;
           &lt;Button
-            variant="secondary"
-            onClick={() =&gt; navigate(-1)}
+            variant="Secondary"
+            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
             data-testid="HelpRequestForm-cancel"
           &gt;
             Cancel
@@ -620,15 +606,14 @@ function HelpRequestForm({
   );
 }
 &nbsp;
-export default HelpRequestForm;
-&nbsp;</pre></td></tr></table></pre>
+export default HelpRequestForm;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-12T03:15:50.905Z
+                at 2024-11-12T04:20:39.803Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
