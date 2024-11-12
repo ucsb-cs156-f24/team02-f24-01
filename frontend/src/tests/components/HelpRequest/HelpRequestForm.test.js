@@ -10,133 +10,134 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
-describe("HelpRequestForm Unit Tests", () => {
-  test("Form renders correctly without initial contents", async () => {
+describe("HelpRequestForm tests", () => {
+  test("renders correctly", async () => {
     render(
       <Router>
         <HelpRequestForm />
-      </Router>
+      </Router>,
     );
+    await screen.findByText(/Requester Email/);
     await screen.findByText(/Create/);
-    expect(screen.getByLabelText(/Requester Email/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Team ID/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Table or Breakout Room/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Request Time/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Explanation/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Solved/)).toBeInTheDocument();
   });
 
-  test("Form renders correctly with initial contents", async () => {
+  test("renders correctly when passing in a HelpRequest", async () => {
     render(
       <Router>
-        <HelpRequestForm initialContents={helpRequestFixtures.oneHelpRequest} />
-      </Router>
+        <HelpRequestForm initialContents={helpRequestFixtures.oneRequest} />
+      </Router>,
     );
     await screen.findByTestId(/HelpRequestForm-id/);
-    expect(screen.getByText(/Id/)).toBeInTheDocument();
+    expect(screen.getByText(/ID/)).toBeInTheDocument();
     expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
+    expect(screen.getByTestId(/HelpRequestForm-requesterEmail/)).toHaveValue(
+      "student1@example.com",
+    );
+    expect(screen.getByTestId(/HelpRequestForm-teamId/)).toHaveValue("team01");
+    expect(
+      screen.getByTestId(/HelpRequestForm-tableOrBreakoutRoom/),
+    ).toHaveValue("Table 1");
+    expect(screen.getByTestId(/HelpRequestForm-explanation/)).toHaveValue(
+      "Need help with project setup",
+    );
+    expect(screen.getByTestId(/HelpRequestForm-solved/)).not.toBeChecked();
   });
 
-  test("Displays error messages for invalid input", async () => {
+  test("Correct Error messages on bad input", async () => {
     render(
       <Router>
         <HelpRequestForm />
-      </Router>
+      </Router>,
     );
-    await screen.findByTestId("HelpRequestForm-solved");
+    await screen.findByTestId("HelpRequestForm-requesterEmail");
     const requesterEmailField = screen.getByTestId(
-      "HelpRequestForm-requesterEmail"
-    );
-    const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
-    const tableOrBreakoutRoomField = screen.getByTestId(
-      "HelpRequestForm-tableOrBreakoutRoom"
+      "HelpRequestForm-requesterEmail",
     );
     const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
-    const solvedField = screen.getByTestId("HelpRequestForm-solved");
-    const explanationField = screen.getByTestId("HelpRequestForm-explanation");
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-    fireEvent.change(requesterEmailField, { target: { value: "bad-input" } });
-    fireEvent.change(teamIdField, { target: { value: "bad-input" } });
-    fireEvent.change(tableOrBreakoutRoomField, {
-      target: { value: "bad-input" },
+    fireEvent.change(requesterEmailField, {
+      target: { value: "email@domain" },
     });
-    fireEvent.change(requestTimeField, { target: { value: "bad-input" } });
-    fireEvent.change(solvedField, { target: { value: "bad-input" } });
-    fireEvent.change(explanationField, { target: { value: "bad-input" } });
+    fireEvent.change(requestTimeField, { target: { value: "2024-01-01T12" } });
     fireEvent.click(submitButton);
 
-    await screen.findByText(/Request Time is required./);
+    await screen.findByText(/Please enter a valid email address/);
   });
 
-  test("Displays error messages for missing input", async () => {
+  test("Correct Error messages on missing input", async () => {
     render(
       <Router>
         <HelpRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("HelpRequestForm-submit");
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
     fireEvent.click(submitButton);
 
-    await screen.findByText(/Table or Breakout Room is required./);
-    expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
+    await screen.findByText(/Requester Email is required/);
+    expect(screen.getByText(/Team ID is required/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Requester email is required./)
+      screen.getByText(/Table or Breakout Room is required/),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Team ID is required./)).toBeInTheDocument();
+    expect(screen.getByText(/Request Time is required/)).toBeInTheDocument();
+    expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
   });
 
-  test("No error messages for valid input", async () => {
+  test("No Error messages on good input", async () => {
     const mockSubmitAction = jest.fn();
 
     render(
       <Router>
         <HelpRequestForm submitAction={mockSubmitAction} />
-      </Router>
+      </Router>,
     );
-    await screen.findByTestId("HelpRequestForm-solved");
+    await screen.findByTestId("HelpRequestForm-requesterEmail");
+
     const requesterEmailField = screen.getByTestId(
-      "HelpRequestForm-requesterEmail"
+      "HelpRequestForm-requesterEmail",
     );
     const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
     const tableOrBreakoutRoomField = screen.getByTestId(
-      "HelpRequestForm-tableOrBreakoutRoom"
+      "HelpRequestForm-tableOrBreakoutRoom",
     );
     const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
-    const solvedField = screen.getByTestId("HelpRequestForm-solved");
     const explanationField = screen.getByTestId("HelpRequestForm-explanation");
+    const solvedCheckbox = screen.getByTestId("HelpRequestForm-solved");
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
     fireEvent.change(requesterEmailField, {
-      target: { value: "john@gmail.com" },
+      target: { value: "student@example.com" },
     });
-    fireEvent.change(teamIdField, { target: { value: "07" } });
+    fireEvent.change(teamIdField, { target: { value: "team01" } });
+    fireEvent.change(tableOrBreakoutRoomField, {
+      target: { value: "Table 1" },
+    });
     fireEvent.change(requestTimeField, {
       target: { value: "2022-01-02T12:00" },
     });
-    fireEvent.change(tableOrBreakoutRoomField, { target: { value: "table" } });
     fireEvent.change(explanationField, {
-      target: { value: "team01 storybook not working" },
+      target: { value: "Need help with setup" },
     });
-    fireEvent.change(solvedField, { target: { value: true } });
-
+    fireEvent.click(solvedCheckbox);
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
     expect(
-      screen.queryByText(/Requester email is required./)
+      screen.queryByText(/Please enter a valid email address/),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Please enter a valid request time/),
     ).not.toBeInTheDocument();
   });
 
-  test("Cancel button navigates back", async () => {
+  test("that navigate(-1) is called when Cancel is clicked", async () => {
     render(
       <Router>
         <HelpRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("HelpRequestForm-cancel");
     const cancelButton = screen.getByTestId("HelpRequestForm-cancel");

@@ -17,18 +17,16 @@ function HelpRequestForm({
 
   const navigate = useNavigate();
 
-  // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
-  // Note that even this complex regex may still need some tweaks
-
   // Stryker disable Regex
-  const isodate_regex =
+  const email_regex = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const isoDate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-  // Stryker restore Regex
+  // Stryker recover Regex
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      <Row>
-        {initialContents && (
+      {initialContents && (
+        <Row>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label htmlFor="id">ID</Form.Label>
@@ -38,12 +36,14 @@ function HelpRequestForm({
                 type="text"
                 {...register("id")}
                 value={initialContents.id}
-                readOnly
+                disabled
               />
             </Form.Group>
           </Col>
-        )}
+        </Row>
+      )}
 
+      <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
@@ -54,6 +54,10 @@ function HelpRequestForm({
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
                 required: "Requester Email is required.",
+                pattern: {
+                  value: email_regex,
+                  message: "Please enter a valid email address.",
+                },
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -61,23 +65,27 @@ function HelpRequestForm({
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="teamId">Team ID</Form.Label>
+            <Form.Label htmlFor="teamId">Team</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-teamId"
               id="teamId"
               type="text"
               isInvalid={Boolean(errors.teamId)}
-              {...register("teamId", {
-                required: "Team ID is required.",
-              })}
+              {...register("teamId", { required: "Team ID is required." })}
             />
             <Form.Control.Feedback type="invalid">
               {errors.teamId?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
+      </Row>
+
+      <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="tableOrBreakoutRoom">
@@ -111,15 +119,12 @@ function HelpRequestForm({
               type="datetime-local"
               isInvalid={Boolean(errors.requestTime)}
               {...register("requestTime", {
-                required: "Request Time is required.",
-                pattern: {
-                  value: isodate_regex,
-                  message: "Invalid ISO date format",
-                },
+                required: true,
+                pattern: isoDate_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requestTime?.message}
+              {errors.requestTime && "Request Time is required. "}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -133,6 +138,7 @@ function HelpRequestForm({
               data-testid="HelpRequestForm-explanation"
               id="explanation"
               type="text"
+              as="textarea"
               isInvalid={Boolean(errors.explanation)}
               {...register("explanation", {
                 required: "Explanation is required.",
@@ -165,7 +171,7 @@ function HelpRequestForm({
             {buttonLabel}
           </Button>
           <Button
-            variant="Secondary"
+            variant="secondary"
             onClick={() => navigate(-1)}
             data-testid="HelpRequestForm-cancel"
           >
