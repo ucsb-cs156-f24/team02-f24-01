@@ -32,15 +32,15 @@ public class UCSBOrganizationWebIT extends WebTestCase {
         page.getByTestId("UCSBOrganizationForm-submit").click();
 
         // Create - Assert
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgField"))
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgField"))
             .hasText("SLEEP");
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslationShort"))
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgTranslationShort"))
             .hasText("Sleep Club");
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslation"))
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgTranslation"))
             .hasText("Sleep Club @ UCSB");
 
         // Edit - Act
-        page.getByTestId("UCSBOrganizationTable-cell-row-0-col-Edit").click();
+        page.getByTestId("OrganizationTable-cell-row-0-col-Edit").click();
         assertThat(page.getByText("Edit UCSB Organization")).isVisible();
        
         page.getByTestId("UCSBOrganizationForm-orgTranslationShort").fill("Sleep Club 2");
@@ -48,15 +48,15 @@ public class UCSBOrganizationWebIT extends WebTestCase {
         page.getByTestId("UCSBOrganizationForm-submit").click();
 
         // Edit - Assert
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslationShort"))
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgTranslationShort"))
             .hasText("Sleep Club 2");
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgTranslation"))
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgTranslation"))
             .hasText("The Sleep Club 2 @ UCSB");
 
         // Delete - Act
-        page.getByTestId("UCSBOrganizationTable-cell-row-0-col-Delete").click();
+        page.getByTestId("OrganizationTable-cell-row-0-col-Delete").click();
 
         // Delete - Assert
-        assertThat(page.getByTestId("UCSBOrganizationTable-cell-row-0-col-orgField")).not().isVisible();
+        assertThat(page.getByTestId("OrganizationTable-cell-row-0-col-orgField")).not().isVisible();
     }
 }
