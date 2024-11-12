@@ -24,7 +24,10 @@ function HelpRequestForm({
   const isodate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
-  const email_regex = /\S@\S+\.\S/;
+
+  // Stryker disable next-line all
+  // const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
+
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
@@ -46,23 +49,18 @@ function HelpRequestForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requesterEmail">
-              Help Requester Email
-            </Form.Label>
+            <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requesterEmail"
               id="requesterEmail"
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
-                required: true,
-                pattern: email_regex,
+                required: "Requester Email is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requesterEmail && "Requester's Email is required."}
-              {errors.requesterEmail?.type === "pattern" &&
-                "RequesterEmail must be a valid email address"}
+              {errors.requesterEmail?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -70,14 +68,14 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="teamId">Team ID</Form.Label>
+            <Form.Label htmlFor="teamId">Team Id</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-teamId"
               id="teamId"
               type="text"
               isInvalid={Boolean(errors.teamId)}
               {...register("teamId", {
-                required: "Team ID is required.",
+                required: "Team Id is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -85,10 +83,12 @@ function HelpRequestForm({
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="tableOrBreakoutRoom">
-              Table or Breakout Room number
+              Table Or Breakout Room
             </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
@@ -96,7 +96,7 @@ function HelpRequestForm({
               type="text"
               isInvalid={Boolean(errors.tableOrBreakoutRoom)}
               {...register("tableOrBreakoutRoom", {
-                required: "Table or Breakout Room number is required.",
+                required: "Table Or Breakout Room is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -108,7 +108,9 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requestTime">Request Time</Form.Label>
+            <Form.Label htmlFor="requestTime">
+              Request Time (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requestTime"
               id="requestTime"
@@ -121,6 +123,8 @@ function HelpRequestForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.requestTime && "Request Time is required."}
+              {/* {errors.requestTime?.type === "pattern" &&
+                                "Request Time must be in ISO format."} */}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -139,7 +143,7 @@ function HelpRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.explanation && "Explanation is required."}
+              {errors.explanation?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -148,19 +152,42 @@ function HelpRequestForm({
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="solved">Solved</Form.Label>
-            <Form.Select
+            <Form.Control
               data-testid="HelpRequestForm-solved"
               id="solved"
+              type="text"
               isInvalid={Boolean(errors.solved)}
-              {...register("solved", {})}
-            >
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </Form.Select>
-            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+              {...register("solved", {
+                required: "Solved is required.",
+              })}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.solved?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>
+
+      {/* <Row>
+                <Col>
+                    <Form.Group className="mb-3">
+                        <Form.Label htmlFor="name">Name</Form.Label>
+                        <Form.Control
+                            data-testid="UCSBDateForm-name"
+                            id="name"
+                            type="text"
+                            isInvalid={Boolean(errors.name)}
+                            {...register("name", {
+                                required: "Name is required.",
+                            })}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.name?.message}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Col>
+            </Row> */}
+
       <Row>
         <Col>
           <Button type="submit" data-testid="HelpRequestForm-submit">
