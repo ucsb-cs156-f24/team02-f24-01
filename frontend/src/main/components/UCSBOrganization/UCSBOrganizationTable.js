@@ -16,13 +16,13 @@ export default function OrganizationTable({
 }) {
   const navigate = useNavigate();
   const editCallback = (cell) => {
-    navigate(`/organizations/edit/${cell.row.values.orgField}`);
+    navigate(`/ucsborganizations/edit/${cell.row.values.orgField}`);
   };
   // Stryker disable all : hard to test for query caching
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/organizations/all"],
+    ["/api/ucsborganizations/all"],
   );
   // Stryker restore all
   // Stryker disable next-line all : TODO try to make a good test for this
