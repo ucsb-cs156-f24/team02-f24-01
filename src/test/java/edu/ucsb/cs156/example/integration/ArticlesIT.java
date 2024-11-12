@@ -1,6 +1,10 @@
 package edu.ucsb.cs156.example.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,12 +27,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
-import edu.ucsb.cs156.example.entities.Articles;
-import edu.ucsb.cs156.example.repositories.ArticlesRepository;
+import edu.ucsb.cs156.example.entities.UCSBArticles;
+import edu.ucsb.cs156.example.repositories.UCSBArticlesRepository;
 import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.services.CurrentUserService;
 import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -44,7 +51,7 @@ public class ArticlesIT {
         public GrantedAuthoritiesService grantedAuthoritiesService;
 
         @Autowired
-        ArticlesRepository articlesRepository;
+        UCSBArticlesRepository articlesRepository;
 
         @Autowired
         public MockMvc mockMvc;
@@ -63,17 +70,19 @@ public class ArticlesIT {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 UCSBArticles ucsbArticles = UCSBArticles.builder()
+                        .id(1L)
                         .title("Article")
                         .url("https://article.com")
                         .explanation("Explanation")
                         .email("student@ucsb.edu")
                         .dateAdded(ldt1)
                         .build();
-                                
+                
+                        
                 articlesRepository.save(ucsbArticles);
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/articles?id=1"))
+                MvcResult response = mockMvc.perform(get("/api/ucsbarticles?id=1"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -90,12 +99,15 @@ public class ArticlesIT {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 UCSBArticles ucsbArticles1 = UCSBArticles.builder()
+                                .id(1L)
                                 .title("Article")
                                 .url("https://article.com")
                                 .explanation("Explanation")
                                 .email("student@ucsb.edu")
                                 .dateAdded(ldt1)
                                 .build();
+
+                //when(articlesRepository.save(eq(ucsbArticles1))).thenReturn(ucsbArticles1);
 
                 // act
                 MvcResult response = mockMvc.perform(
@@ -104,7 +116,7 @@ public class ArticlesIT {
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-                String expectedJson = mapper.writeValueAsString(ucsbArticles1);
+                String expectedJson = mapper.writeValueAsString(ucsbArticles1);               
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
