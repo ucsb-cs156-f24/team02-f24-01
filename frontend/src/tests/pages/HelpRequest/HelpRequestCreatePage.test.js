@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PlaceholderCreatePage from "main/pages/HelpRequest/PlaceholderCreatePage";
+import PlaceholderCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 

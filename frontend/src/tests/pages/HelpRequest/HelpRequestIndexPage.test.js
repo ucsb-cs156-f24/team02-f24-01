@@ -51,7 +51,7 @@ describe("HelpRequestIndexPage tests", () => {
     // arrange
     setupAdminUser();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/helprequests/all").reply(200, []);
+    axiosMock.onGet("/api/helprequest/all").reply(200, []);
 
     // act
     render(
@@ -67,7 +67,7 @@ describe("HelpRequestIndexPage tests", () => {
       expect(screen.getByText(/Create HelpRequest/)).toBeInTheDocument();
     });
     const button = screen.getByText(/Create HelpRequest/);
-    expect(button).toHaveAttribute("href", "/helprequests/create");
+    expect(button).toHaveAttribute("href", "/helprequest/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
@@ -76,7 +76,7 @@ describe("HelpRequestIndexPage tests", () => {
     setupUserOnly();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/helprequests/all")
+      .onGet("/api/helprequest/all")
       .reply(200, helpRequestFixtures.threeRequests);
 
     // act
@@ -109,7 +109,7 @@ describe("HelpRequestIndexPage tests", () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/helprequests/all").timeout();
+    axiosMock.onGet("/api/helprequest/all").timeout();
     const restoreConsole = mockConsole();
 
     // act
@@ -128,7 +128,7 @@ describe("HelpRequestIndexPage tests", () => {
 
     const errorMessage = console.error.mock.calls[0][0];
     expect(errorMessage).toMatch(
-      "Error communicating with backend via GET on /api/helprequests/all",
+      "Error communicating with backend via GET on /api/helprequest/all",
     );
     restoreConsole();
 
@@ -142,10 +142,10 @@ describe("HelpRequestIndexPage tests", () => {
     setupAdminUser();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/helprequests/all")
+      .onGet("/api/helprequest/all")
       .reply(200, helpRequestFixtures.threeRequests);
     axiosMock
-      .onDelete("/api/helprequests")
+      .onDelete("/api/helprequest")
       .reply(200, "HelpRequest with id 1 was deleted");
 
     // act
