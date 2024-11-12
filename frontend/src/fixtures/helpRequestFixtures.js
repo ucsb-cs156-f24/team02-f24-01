@@ -1,6 +1,7 @@
 const helpRequestFixtures = {
   oneHelpRequest: [
     {
+      id: 1,
       requesterEmail: "student@example.com",
       teamId: "team01",
       tableOrBreakoutRoom: "Table 1",
@@ -11,6 +12,7 @@ const helpRequestFixtures = {
   ],
   threeHelpRequests: [
     {
+      id: 1,
       requesterEmail: "student1@example.com",
       teamId: "team01",
       tableOrBreakoutRoom: "Table 1",
@@ -19,6 +21,7 @@ const helpRequestFixtures = {
       solved: false,
     },
     {
+      id: 2,
       requesterEmail: "student2@example.com",
       teamId: "team02",
       tableOrBreakoutRoom: "Table 2",
@@ -27,6 +30,7 @@ const helpRequestFixtures = {
       solved: true,
     },
     {
+      id: 3,
       requesterEmail: "student3@example.com",
       teamId: "team03",
       tableOrBreakoutRoom: "Breakout Room 1",

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
+import PlaceholderEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("PlaceholderCreatePage tests", () => {
+describe("PlaceholderEditPage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
 
   const setupUserOnly = () => {
@@ -32,13 +32,12 @@ describe("PlaceholderCreatePage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <PlaceholderCreatePage />
+          <PlaceholderEditPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
 
     // assert
-
-    await screen.findByText("Create page not yet implemented");
+    await screen.findByText("Edit page not yet implemented");
   });
 });
