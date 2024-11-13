@@ -43,7 +43,7 @@ describe("UserTable tests", () => {
     const expectedFields = [
       "id",
       "requesterEmail",
-      "TeamId",
+      "teamId",
       "tableOrBreakoutRoom",
       "requestTime",
       "explanation",

@@ -1,15 +1,14 @@
 const helpRequestFixtures = {
-  oneHelpRequest: [
-    {
-      id: 1,
-      requesterEmail: "student@example.com",
-      teamId: "team01",
-      tableOrBreakoutRoom: "Table 1",
-      requestTime: "2023-10-01T10:00:00",
-      explanation: "Need help with project setup",
-      solved: false,
-    },
-  ],
+  oneHelpRequest: {
+    id: 1,
+    requesterEmail: "student@example.com",
+    teamId: "team01",
+    tableOrBreakoutRoom: "Table 1",
+    requestTime: "2023-10-01T10:00:00",
+    explanation: "Need help with project setup",
+    solved: false,
+  },
+
   threeHelpRequests: [
     {
       id: 1,

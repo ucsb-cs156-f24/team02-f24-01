@@ -40,7 +40,7 @@ function HelpRequestForm({
                 id="id"
                 type="text"
                 {...register("id")}
-                value={initialContents.id}
+                defaultValue={initialContents.id}
                 disabled
               />
             </Form.Group>

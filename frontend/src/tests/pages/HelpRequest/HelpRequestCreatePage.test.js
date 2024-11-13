@@ -134,7 +134,7 @@ describe("HelpRequestCreatePage tests", () => {
       tableOrBreakoutRoom: "Groundhog Day",
       requestTime: "2022-02-02T00:00",
       explanation: "monk",
-      solved: false,
+      solved: "false",
     });
 
     expect(mockToast).toBeCalledWith(
