@@ -25,20 +25,19 @@ public class MenuItemReviewWebIT extends WebTestCase {
 
         page.getByText("Create MenuItemReview").click();
         assertThat(page.getByText("Create new Menu Item Review")).isVisible();
-        page.getByTestId("MenuItemReviewForm-itemId").fill("12345");
+        page.getByTestId("MenuItemReviewForm-itemId").fill("1");
         page.getByTestId("MenuItemReviewForm-reviewerEmail").fill("test@ucsb.edu");
         page.getByTestId("MenuItemReviewForm-stars").fill("4");
-        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("2024-10-10T10:10:10");
+        page.getByTestId("MenuItemReviewForm-dateReviewed").fill("2024-10-10T10:10");
         page.getByTestId("MenuItemReviewForm-comments").fill("test");
         page.getByTestId("MenuItemReviewForm-submit").click();
-
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-itemId"))
-                .hasText("12345");
+                .hasText("1");
 
         page.getByTestId("MenuItemReviewTable-cell-row-0-col-Edit-button").click();
         assertThat(page.getByText("Edit MenuItemReview")).isVisible();
-        page.getByTestId("MenuItemReview-comments").fill("tasty");
-        page.getByTestId("MenuItemReview-submit").click();
+        page.getByTestId("MenuItemReviewForm-comments").fill("tasty");
+        page.getByTestId("MenuItemReviewForm-submit").click();
 
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments")).hasText("tasty");
 
