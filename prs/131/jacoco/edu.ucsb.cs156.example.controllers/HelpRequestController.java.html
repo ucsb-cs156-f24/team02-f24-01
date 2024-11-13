@@ -49,8 +49,8 @@ import java.time.LocalDateTime;
     @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
     @GetMapping(&quot;/all&quot;)
     public Iterable&lt;HelpRequest&gt; allHelpRequests() {
-<span class="fc" id="L52">        Iterable&lt;HelpRequest&gt; dates = helpRequestRepository.findAll();</span>
-<span class="fc" id="L53">        return dates;</span>
+<span class="fc" id="L52">        Iterable&lt;HelpRequest&gt; requests = helpRequestRepository.findAll();</span>
+<span class="fc" id="L53">        return requests;</span>
     }
 
     /**
