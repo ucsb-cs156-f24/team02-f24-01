@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function HelpRequestTable({ requests, currentUser }) {
+export default function HelpRequestTable({ dates, currentUser }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
@@ -36,19 +36,19 @@ export default function HelpRequestTable({ requests, currentUser }) {
       accessor: "id", // accessor is the "key" in the data
     },
     {
-      Header: "Requester Email",
+      Header: "RequesterEmail",
       accessor: "requesterEmail",
     },
     {
-      Header: "Team Id",
+      Header: "TeamId",
       accessor: "teamId",
     },
     {
-      Header: "Table Or Breakout Room",
+      Header: "TableOrBreakoutRoom",
       accessor: "tableOrBreakoutRoom",
     },
     {
-      Header: "Request Time",
+      Header: "RequestTime",
       accessor: "requestTime",
     },
     {
@@ -71,6 +71,6 @@ export default function HelpRequestTable({ requests, currentUser }) {
   }
 
   return (
-    <OurTable data={requests} columns={columns} testid={"HelpRequestTable"} />
+    <OurTable data={dates} columns={columns} testid={"HelpRequestTable"} />
   );
 }

@@ -24,7 +24,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            requests={helpRequestFixtures.threeRequests}
+            dates={helpRequestFixtures.threeDates}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -33,17 +33,15 @@ describe("UserTable tests", () => {
 
     const expectedHeaders = [
       "id",
-      "Requester Email",
-      "Team Id",
-      "Table Or Breakout Room",
-      "Request Time",
+      "RequesterEmail",
+      "TableOrBreakoutRoom",
+      "RequestTime",
       "Explanation",
       "Solved",
     ];
     const expectedFields = [
       "id",
       "requesterEmail",
-      "teamId",
       "tableOrBreakoutRoom",
       "requestTime",
       "explanation",
@@ -86,7 +84,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            requests={helpRequestFixtures.threeRequests}
+            dates={helpRequestFixtures.threeDates}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -95,10 +93,10 @@ describe("UserTable tests", () => {
 
     const expectedHeaders = [
       "id",
-      "Requester Email",
-      "Team Id",
-      "Table Or Breakout Room",
-      "Request Time",
+      "RequesterEmail",
+      "TeamId",
+      "TableOrBreakoutRoom",
+      "RequestTime",
       "Explanation",
       "Solved",
     ];
@@ -150,7 +148,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            requests={helpRequestFixtures.threeRequests}
+            dates={helpRequestFixtures.threeDates}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -182,14 +180,14 @@ describe("UserTable tests", () => {
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
       .onDelete("/api/helprequest")
-      .reply(200, { message: "Request deleted" });
+      .reply(200, { message: "Date deleted" });
 
     // act - render the component
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            requests={helpRequestFixtures.threeRequests}
+            dates={helpRequestFixtures.threeDates}
             currentUser={currentUser}
           />
         </MemoryRouter>
