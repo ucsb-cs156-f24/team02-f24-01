@@ -80,7 +80,7 @@ public class HelpRequestController extends ApiController {
      * @param solved
      * @return the saved HelpRequest
      */
-    @Operation(summary= "Create a new date")
+    @Operation(summary= "Create a new request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public HelpRequest postHelpRequest(
@@ -136,7 +136,7 @@ public class HelpRequestController extends ApiController {
      * @param incoming the new date
      * @return the updated date object
      */
-    @Operation(summary= "Update a single date")
+    @Operation(summary= "Update a single request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public HelpRequest updateHelpRequest(
