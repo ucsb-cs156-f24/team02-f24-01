@@ -27,7 +27,7 @@ Default.parameters = {
       });
     }),
     http.get("/api/helpRequest", () => {
-      return HttpResponse.json(helpRequestFixtures.threeDates[0], {
+      return HttpResponse.json(helpRequestFixtures.threeHelpRequests[0], {
         status: 200,
       });
     }),

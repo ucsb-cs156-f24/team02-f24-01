@@ -24,7 +24,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            dates={helpRequestFixtures.threeDates}
+            requests={helpRequestFixtures.threeHelpRequests}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -34,6 +34,7 @@ describe("UserTable tests", () => {
     const expectedHeaders = [
       "id",
       "RequesterEmail",
+      "Team Id",
       "TableOrBreakoutRoom",
       "RequestTime",
       "Explanation",
@@ -42,6 +43,7 @@ describe("UserTable tests", () => {
     const expectedFields = [
       "id",
       "requesterEmail",
+      "Team Id",
       "tableOrBreakoutRoom",
       "requestTime",
       "explanation",
@@ -84,7 +86,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            dates={helpRequestFixtures.threeDates}
+            requests={helpRequestFixtures.threeHelpRequests}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -148,7 +150,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            dates={helpRequestFixtures.threeDates}
+            requests={helpRequestFixtures.threeHelpRequests}
             currentUser={currentUser}
           />
         </MemoryRouter>
@@ -187,7 +189,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <HelpRequestTable
-            dates={helpRequestFixtures.threeDates}
+            requests={helpRequestFixtures.threeHelpRequests}
             currentUser={currentUser}
           />
         </MemoryRouter>

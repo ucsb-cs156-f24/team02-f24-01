@@ -43,7 +43,7 @@ ThreeItemsOrdinaryUser.parameters = {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
     http.get("/api/helprequest/all", () => {
-      return HttpResponse.json(helpRequestFixtures.threeDates);
+      return HttpResponse.json(helpRequestFixtures.threeHelpRequests);
     }),
   ],
 };
@@ -59,7 +59,7 @@ ThreeItemsAdminUser.parameters = {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
     http.get("/api/helprequest/all", () => {
-      return HttpResponse.json(helpRequestFixtures.threeDates);
+      return HttpResponse.json(helpRequestFixtures.threeHelpRequests);
     }),
     http.delete("/api/helprequest", () => {
       return HttpResponse.json({}, { status: 200 });

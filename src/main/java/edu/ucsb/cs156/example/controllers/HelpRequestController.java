@@ -49,8 +49,8 @@ public class HelpRequestController extends ApiController {
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<HelpRequest> allHelpRequests() {
-        Iterable<HelpRequest> dates = helpRequestRepository.findAll();
-        return dates;
+        Iterable<HelpRequest> requests = helpRequestRepository.findAll();
+        return requests;
     }
 
     /**

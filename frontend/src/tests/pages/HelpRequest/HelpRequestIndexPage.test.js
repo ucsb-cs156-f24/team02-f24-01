@@ -71,13 +71,13 @@ describe("HelpRequestIndexPage tests", () => {
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
-  test("renders three dates correctly for regular user", async () => {
+  test("renders three requests correctly for regular user", async () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
     axiosMock
       .onGet("/api/helprequest/all")
-      .reply(200, helpRequestFixtures.threeDates);
+      .reply(200, helpRequestFixtures.threeHelpRequests);
 
     // act
     render(
@@ -143,7 +143,7 @@ describe("HelpRequestIndexPage tests", () => {
     const queryClient = new QueryClient();
     axiosMock
       .onGet("/api/helprequest/all")
-      .reply(200, helpRequestFixtures.threeDates);
+      .reply(200, helpRequestFixtures.threeHelpRequests);
     axiosMock
       .onDelete("/api/helprequest")
       .reply(200, "HelpRequest with id 1 was deleted");

@@ -24,7 +24,7 @@ export default function HelpRequestIndexPage() {
   };
 
   const {
-    data: dates,
+    data: requests,
     error: _error,
     status: _status,
   } = useBackend(
@@ -39,7 +39,7 @@ export default function HelpRequestIndexPage() {
       <div className="pt-2">
         {createButton()}
         <h1>HelpRequest</h1>
-        <HelpRequestTable dates={dates} currentUser={currentUser} />
+        <HelpRequestTable requests={requests} currentUser={currentUser} />
       </div>
     </BasicLayout>
   );
