@@ -34,7 +34,7 @@ describe("UserTable tests", () => {
     const expectedHeaders = [
       "id",
       "RequesterEmail",
-      "Team Id",
+      "TeamId",
       "TableOrBreakoutRoom",
       "RequestTime",
       "Explanation",
@@ -43,7 +43,7 @@ describe("UserTable tests", () => {
     const expectedFields = [
       "id",
       "requesterEmail",
-      "Team Id",
+      "TeamId",
       "tableOrBreakoutRoom",
       "requestTime",
       "explanation",

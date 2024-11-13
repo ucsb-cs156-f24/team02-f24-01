@@ -118,7 +118,7 @@ describe("HelpRequestCreatePage tests", () => {
       target: { value: "monk" },
     });
     fireEvent.change(solvedField, {
-      target: { value: "true" },
+      target: { value: "false" },
     });
 
     expect(submitButton).toBeInTheDocument();
