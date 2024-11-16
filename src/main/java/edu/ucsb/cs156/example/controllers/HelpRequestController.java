@@ -1,10 +1,8 @@
 package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.entities.HelpRequest;
-import edu.ucsb.cs156.example.entities.UCSBDate;
 import edu.ucsb.cs156.example.errors.EntityNotFoundException;
 import edu.ucsb.cs156.example.repositories.HelpRequestRepository;
-import edu.ucsb.cs156.example.repositories.UCSBDateRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -29,15 +27,24 @@ import jakarta.validation.Valid;
 
 import java.time.LocalDateTime;
 
-@Tag(name = "HelpRequest") // Does this have to be plural?
+/**
+ * This is a REST controller for HelpRequests
+ */
+
+@Tag(name = "HelpRequest")
 @RequestMapping("/api/helprequest")
 @RestController
 @Slf4j
+public class HelpRequestController extends ApiController {
 
-public class HelpRequestController extends ApiController{
     @Autowired
     HelpRequestRepository helpRequestRepository;
 
+    /**
+     * List all help requests
+     * 
+     * @return an iterable of HelpRequest
+     */
     @Operation(summary= "List all help requests")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
@@ -46,16 +53,33 @@ public class HelpRequestController extends ApiController{
         return requests;
     }
 
-    @Operation(summary= "GET (show) a single record in the table")
+    /**
+     * Get a single date by id
+     * 
+     * @param id the id of HelpRequest
+     * @return a HelpRequest
+     */
+    @Operation(summary= "Get a single date")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public HelpRequest getById(
             @Parameter(name="id") @RequestParam Long id) {
-        HelpRequest helpRequest = helpRequestRepository.findById(id)
+        HelpRequest HelpRequest = helpRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
-        return helpRequest;
+
+        return HelpRequest;
     }
 
+    /**
+     * Create a new date
+     * @param requesterEmail
+     * @param teamId
+     * @param tableOrBreakoutRoom
+     * @param requestTime
+     * @param explanation
+     * @param solved
+     * @return the saved HelpRequest
+     */
     @Operation(summary= "Create a new request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
@@ -63,9 +87,10 @@ public class HelpRequestController extends ApiController{
             @Parameter(name="requesterEmail") @RequestParam String requesterEmail,
             @Parameter(name="teamId") @RequestParam String teamId,
             @Parameter(name="tableOrBreakoutRoom") @RequestParam String tableOrBreakoutRoom,
-            @Parameter(name="requestTime", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("requestTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime,
-            @Parameter(name="explanation") @RequestParam String explanation,
-            @Parameter(name="solved") @RequestParam boolean solved)
+            @Parameter(name="requestTime", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("requestTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime requestTime, 
+            @Parameter(name = "explanation") @RequestParam String explanation,
+            @Parameter(name = "solved") @RequestParam boolean solved)
+
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -73,62 +98,63 @@ public class HelpRequestController extends ApiController{
 
         log.info("requestTime={}", requestTime);
 
-        // HelpRequest helpRequest = new HelpRequest();
-        // helpRequest.setRequesterEmail(requesterEmail); // This part is failing pitest
-        // helpRequest.setTeamId(teamId);
-        // helpRequest.setTableOrBreakoutRoom(tableOrBreakoutRoom);
-        // helpRequest.setRequestTime(requestTime);
-        // helpRequest.setExplanation(explanation);
-        // helpRequest.setSolved(solved);
+        HelpRequest HelpRequest = new HelpRequest();
+        HelpRequest.setRequesterEmail(requesterEmail);
+        HelpRequest.setTeamId(teamId);
+        HelpRequest.setTableOrBreakoutRoom(tableOrBreakoutRoom);
+        HelpRequest.setRequestTime(requestTime);
+        HelpRequest.setExplanation(explanation);
+        HelpRequest.setSolved(solved);
 
-        // Using a builder works with pitest mutation coverage
-        HelpRequest helpRequest = HelpRequest.builder()
-            .requesterEmail(requesterEmail)
-            .teamId(teamId)
-            .tableOrBreakoutRoom(tableOrBreakoutRoom)
-            .requestTime(requestTime)
-            .explanation(explanation)
-            .solved(solved)
-            .build();
-                
-        HelpRequest savedHelpRequest = helpRequestRepository.save(helpRequest);
+        HelpRequest savedHelpRequest = helpRequestRepository.save(HelpRequest);
 
         return savedHelpRequest;
     }
 
-    @Operation(summary= "Delete a single record from the table")
+    /**
+     * Delete a HelpRequest
+     * 
+     * @param id the id of the HelpRequest to delete
+     * @return a message indicating the HelpRequest was deleted
+     */
+    @Operation(summary= "Delete a HelpRequest")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public Object deleteHelpRequest(
             @Parameter(name="id") @RequestParam Long id) {
-        HelpRequest helpRequest = helpRequestRepository.findById(id)
+        HelpRequest HelpRequest = helpRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
 
-        helpRequestRepository.delete(helpRequest);
+        helpRequestRepository.delete(HelpRequest);
         return genericMessage("HelpRequest with id %s deleted".formatted(id));
     }
-    
-    @Operation(summary= "Update a single record in the table")
+
+    /**
+     * Update a single date
+     * 
+     * @param id       id of the date to update
+     * @param incoming the new date
+     * @return the updated date object
+     */
+    @Operation(summary= "Update a single request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public HelpRequest updateHelpRequest(
             @Parameter(name="id") @RequestParam Long id,
             @RequestBody @Valid HelpRequest incoming) {
 
-        HelpRequest helpRequest = helpRequestRepository.findById(id)
+        HelpRequest HelpRequest = helpRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
+        HelpRequest.setRequesterEmail(incoming.getRequesterEmail());
+        HelpRequest.setTeamId(incoming.getTeamId());
+        HelpRequest.setTableOrBreakoutRoom(incoming.getTableOrBreakoutRoom());
+        HelpRequest.setRequestTime(incoming.getRequestTime());
+        HelpRequest.setExplanation(incoming.getExplanation());
+        HelpRequest.setSolved(incoming.getSolved());
+    
 
-        helpRequest.setRequesterEmail(incoming.getRequesterEmail());
-        helpRequest.setTeamId(incoming.getTeamId());
-        helpRequest.setTableOrBreakoutRoom(incoming.getTableOrBreakoutRoom());
-        helpRequest.setRequestTime(incoming.getRequestTime());
-        helpRequest.setExplanation(incoming.getExplanation());
-        helpRequest.setSolved(incoming.getSolved());
+        helpRequestRepository.save(HelpRequest);
 
-        helpRequestRepository.save(helpRequest);
-
-        return helpRequest;
+        return HelpRequest;
     }
-
-
 }
