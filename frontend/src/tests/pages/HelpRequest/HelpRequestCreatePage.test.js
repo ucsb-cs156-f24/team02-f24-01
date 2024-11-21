@@ -118,7 +118,7 @@ describe("HelpRequestCreatePage tests", () => {
       target: { value: "monk" },
     });
     fireEvent.click(solvedField); // Toggle checkbox
-   
+
     expect(submitButton).toBeInTheDocument();
 
     fireEvent.click(submitButton);
