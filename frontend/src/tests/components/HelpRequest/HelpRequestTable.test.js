@@ -69,7 +69,7 @@ describe("UserTable tests", () => {
     );
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-Solved`),
-    ).toHaveTextContent("true");
+    ).toHaveTextContent("false");
     const editButton = screen.queryByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
     );

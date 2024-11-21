@@ -104,7 +104,7 @@ describe("HelpRequestForm tests", () => {
     fireEvent.change(explanationField, {
       target: { value: "this is the explanation." },
     });
-    fireEvent.change(solvedField, { target: { value: "true" } });
+    fireEvent.click(solvedField);
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
