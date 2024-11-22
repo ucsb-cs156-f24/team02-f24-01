@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 @Entity(name = "helprequest")
 public class HelpRequest {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     String requesterEmail;
     String teamId;
     String tableOrBreakoutRoom;

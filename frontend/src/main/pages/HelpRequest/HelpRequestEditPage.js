@@ -32,7 +32,7 @@ export default function HelpRequestEditPage({ storybook = false }) {
       id: helpRequest.id,
     },
     data: {
-      requesterEmail: helpRequest.quarterYYYYQ,
+      requesterEmail: helpRequest.requesterEmail,
       teamId: helpRequest.teamId,
       tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
       requestTime: helpRequest.requestTime,

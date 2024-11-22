@@ -157,9 +157,7 @@ function HelpRequestForm({
               id="solved"
               type="checkbox"
               isInvalid={Boolean(errors.solved)}
-              {...register("solved", {
-                required: "Solved is required.",
-              })}
+              {...register("solved")}
             />
             <Form.Control.Feedback type="invalid">
               {errors.solved?.message}
