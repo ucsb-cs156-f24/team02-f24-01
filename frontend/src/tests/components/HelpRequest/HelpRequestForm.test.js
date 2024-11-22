@@ -68,7 +68,6 @@ describe("HelpRequestForm tests", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Solved is required./)).toBeInTheDocument();
   });
 
   test("No Error messsages on good input", async () => {
@@ -104,7 +103,7 @@ describe("HelpRequestForm tests", () => {
     fireEvent.change(explanationField, {
       target: { value: "this is the explanation." },
     });
-    fireEvent.change(solvedField, { target: { value: "true" } });
+    fireEvent.click(solvedField);
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());

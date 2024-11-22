@@ -66,12 +66,12 @@ describe("HelpRequestCreatePage tests", () => {
     const queryClient = new QueryClient();
     const helpRequest = {
       id: 17,
-      requesterEmail: "20221",
+      requesterEmail: "test1@ucsb.edu",
       teamId: "monk",
       tableOrBreakoutRoom: "Pi Day",
       requestTime: "2022-03-14T15:00",
       explanation: "monk",
-      solved: "true",
+      solved: true,
     };
 
     axiosMock.onPost("/api/helprequest/post").reply(202, helpRequest);
@@ -117,9 +117,7 @@ describe("HelpRequestCreatePage tests", () => {
     fireEvent.change(explanationField, {
       target: { value: "monk" },
     });
-    fireEvent.change(solvedField, {
-      target: { value: "false" },
-    });
+    fireEvent.click(solvedField); // Toggle checkbox
 
     expect(submitButton).toBeInTheDocument();
 
@@ -134,7 +132,7 @@ describe("HelpRequestCreatePage tests", () => {
       tableOrBreakoutRoom: "Groundhog Day",
       requestTime: "2022-02-02T00:00",
       explanation: "monk",
-      solved: "false",
+      solved: true, // was flipped o fix npm test (didn't change anything)
     });
 
     expect(mockToast).toBeCalledWith(
