@@ -204,7 +204,7 @@ describe("HelpRequestEditPage tests", () => {
       expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
       expect(axiosMock.history.put[0].data).toBe(
         JSON.stringify({
-          //   requesterEmail: "20224",
+          requesterEmail: "20224",
           teamId: "dog",
           tableOrBreakoutRoom: "Christmas Morning",
           requestTime: "2022-12-25T08:00",
